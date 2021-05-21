@@ -358,7 +358,7 @@ class Top2Vec:
 
         umap_model = umap.UMAP(**umap_args).fit(self._get_document_vectors(norm=False))
         ## sketchy addition
-        self.__umap_model = umap_model
+        self.s_umap_model = umap_model
         
         # find dense areas of document vectors
         logger.info('Finding dense areas of documents')
@@ -370,7 +370,7 @@ class Top2Vec:
 
         cluster = hdbscan.HDBSCAN(**hdbscan_args).fit(umap_model.embedding_)
         ## sketchy addition 2
-        self.__cluster = cluster
+        self.s_cluster = cluster
 
         # calculate topic vectors from dense areas of documents
         logger.info('Finding topics')
